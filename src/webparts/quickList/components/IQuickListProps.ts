@@ -4,4 +4,5 @@ export interface IQuickListProps {
   listTitle:string;
   ctx:WebPartContext;
   themeVariant: IReadonlyTheme | undefined;
+  webPartSectionSize: number;
 }

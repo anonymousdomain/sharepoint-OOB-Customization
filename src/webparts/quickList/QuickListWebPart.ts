@@ -28,7 +28,8 @@ export default class QuickListWebPart extends BaseClientSideWebPart<IQuickListWe
       {
         listTitle: this.properties.listName,
         ctx: this.context,
-        themeVariant: this._themeVariant
+        themeVariant: this._themeVariant,
+        webPartSectionSize: this.domElement.getBoundingClientRect().width
       }
     );
 
