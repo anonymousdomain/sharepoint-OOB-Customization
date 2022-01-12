@@ -1,16 +1,25 @@
-import {SPHttpClient,SPHttpClientResponse} from "@microsoft/sp-http"
+import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from "@microsoft/sp-http"
 import { SectionSizesEnum } from "./components/SectionSizeEnum";
-export const  _getSPData=async (_client: SPHttpClient, url: string): Promise<any> =>{
-    let res: SPHttpClientResponse = await _client.get(
-      url,
-      SPHttpClient.configurations.v1
+export const _getSPData = async (client: SPHttpClient, url: string): Promise<any> => {
+    let res: SPHttpClientResponse = await client.get(
+        url,
+        SPHttpClient.configurations.v1
     );
     let json = res.json();
     return json;
-  }
+}
 
+export const _postSPData = async (client: SPHttpClient, url: string, sppayload: any): Promise<any> => {
 
-  export function getWebPartSectionSize(width: number): SectionSizesEnum {
+    const spOpts: ISPHttpClientOptions = {
+        body:sppayload
+    };
+    let res: SPHttpClientResponse = await client.post(url, SPHttpClient.configurations.v1, spOpts)
+    let json = res.json()
+    return json;
+}
+
+export function getWebPartSectionSize(width: number): SectionSizesEnum {
     if (width < 300)
         return SectionSizesEnum.small;
     if (width < 400)
