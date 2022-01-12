@@ -25,6 +25,9 @@ const AddLinkPanel = (props: IAddLinkProps) => {
     setIsOpen(false);
     props.handleAddLink(form);
   };
+  if(props.hidden){
+    return (<></>)
+  }else
   return (
     <div className={_container}>
       <ActionButton

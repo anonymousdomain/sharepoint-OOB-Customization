@@ -4,22 +4,22 @@ import styles from "./QuickList.module.scss";
 import { SectionSizesEnum } from "./SectionSizeEnum";
 
 const QuickList = (props: any) => {
-  let _width ="21%";
+  let _width ="28%";
   let _border="1px solid"
   let _sectionSize: SectionSizesEnum = props.sectionSize;
   if (_sectionSize === SectionSizesEnum.medium50) {
     _width = "100%";
   } else if (_sectionSize === SectionSizesEnum.medium23) {
-    _width ="45.35%";
+    _width ="88.35%%";
   } else if (_sectionSize === SectionSizesEnum.large) {
-    _width = "43.35%";
+    _width = "41.35%";
   }
   let _container = mergeStyles({
     width: _width,
     border:_border,
     borderRadius: 5,
     height: 35,
-    margin: "0 0 15px 0",
+    marginBottom: "1px",
     padding: 12,
   });
   let _innerCont = mergeStyles({
@@ -36,9 +36,10 @@ const QuickList = (props: any) => {
     maxHeight: 41,
     overflow: "hidden",
   });
+  
   return (
     <div className={_container}>
-      <Link href={props.link.url}>
+      <Link className={styles.link} href={props.link.url}>
         <div className={_innerCont}>
           <div className={_iconCont}>
             <Icon iconName="Globe"></Icon>

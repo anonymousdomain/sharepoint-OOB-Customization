@@ -5,4 +5,5 @@ export interface IQuickListProps {
   ctx:WebPartContext;
   themeVariant: IReadonlyTheme | undefined;
   webPartSectionSize: number;
+  editMode:boolean;
 }

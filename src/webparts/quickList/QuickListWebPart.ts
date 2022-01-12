@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { DisplayMode, Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
@@ -29,7 +29,8 @@ export default class QuickListWebPart extends BaseClientSideWebPart<IQuickListWe
         listTitle: this.properties.listName,
         ctx: this.context,
         themeVariant: this._themeVariant,
-        webPartSectionSize: this.domElement.getBoundingClientRect().width
+        webPartSectionSize: this.domElement.getBoundingClientRect().width,
+        editMode:(this.displayMode===DisplayMode.Edit)
       }
     );
 

@@ -5,7 +5,7 @@ import QuickList from "./QuickList";
 import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
 import * as utils from "../utils";
 import { SectionSizesEnum } from "./SectionSizeEnum";
-import { Customizer, FontSizes, mergeStyles } from "office-ui-fabric-react";
+import { Customizer, FontSizes, mergeStyles, Stack } from "office-ui-fabric-react";
 import AddLink from "./AddLinkPanel/AddLink";
 import { ILinkItemProps } from "./AddLinkPanel/ILinkItemProps";
 export default class QuickListApp extends React.Component<
@@ -73,10 +73,8 @@ export default class QuickListApp extends React.Component<
 
   public render(): React.ReactElement<IQuickListProps> {
     let _container = mergeStyles({
-      display: "flex",
-      flexDirection: "row",
-      flexWrap: "wrap",
-      justifyContent: "space-between",
+     marginTop:16,
+     marginBottom:16
     });
     let _header = mergeStyles({
       fontSize: 20,
@@ -90,12 +88,13 @@ export default class QuickListApp extends React.Component<
           <AddLink
             buttonTitle="Add Links"
             handleAddLink={(link) => this._addLink(link)}
+            hidden={!this.props.editMode}
           />
-          <div className={_container}>
+          <Stack className={_container} horizontal wrap tokens={{childrenGap:20}}>
             {this.state.items.map((item) => (
               <QuickList link={item} sectionSize={this.state.sectionSize} />
             ))}
-          </div>
+          </Stack>
         </div>
       </Customizer>
     );
